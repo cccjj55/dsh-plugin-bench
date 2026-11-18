@@ -1,0 +1,27 @@
+name: ci
+
+on: [push, pull_request]
+
+jobs:
+  test:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Contract + statistics
+        run: node test/smoke.mjs
+      - name: Demo produces artifacts
+        run: |
+          node demo.mjs --repeats 2
+      - name: Artifacts exist
+        shell: bash
+        run: |
+          ls bench-results
+          test -n "$(ls bench-results/*.md)"
+          test -n "$(ls bench-results/*.json)"

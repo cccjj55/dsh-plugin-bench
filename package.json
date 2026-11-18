@@ -1,0 +1,37 @@
+{
+  "name": "dsh-plugin-bench",
+  "version": "0.1.0",
+  "description": "dsh plugin: run a command N times, get best/median/p95 + spread and an environment fingerprint. Refuses to call a noisy sample a measurement.",
+  "type": "module",
+  "main": "lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib"
+  ],
+  "keywords": [
+    "dsh-plugin",
+    "dsh",
+    "benchmark",
+    "timing",
+    "reproducibility",
+    "performance"
+  ],
+  "peerDependencies": {
+    "@deepseek-ai/cordis": "~4.0.4",
+    "@deepseek-ai/dsh-tools": "0.2.0-rc.2"
+  },
+  "peerDependenciesMeta": {
+    "@deepseek-ai/cordis": {
+      "optional": true
+    }
+  },
+  "license": "MIT",
+  "author": "Zeyi Chen (https://github.com/cccjj55)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cccjj55/dsh-plugin-bench.git"
+  }
+}
